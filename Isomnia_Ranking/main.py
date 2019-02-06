@@ -34,8 +34,9 @@ if __name__ == '__main__':
     
     ##Data Pre-Processing
 
-
-    dict_user_data = Dict_user_data(user_Id,input_data_csv)
+    sleep_activity_nap = max_min_normalization(input_data_csv)
+    
+    dict_user_data = Dict_user_data(sleep_activity_nap)
     
     dict_user_window,dict_user_sleep_efficency = Dict_user_window_sf(user_Id,dict_user_data,window＿size,sleep_efficiency_location)
 
