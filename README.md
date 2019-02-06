@@ -3,7 +3,7 @@ Implementation of Learning Sleep Quality from Daily Logs in Tensorflow.
 
 ### Data
 Table 1 displays the list of data features gathered by the Fitbit device and the user surveys. All features without "onbed_min" (which was excluded due to its strong correlation with other sleep features.) were used in this project. 
-Sample data from four randomly selected users is uploaded in data folder. sample_data_sleeps_Imp-ORIGINAL.csv includes the data from Modality 1 and 2, and sample_meta-data_sleeps.csv includes the data from Modality 3.
+Sample data from four randomly selected users is uploaded in data folder. sample_data_sleeps_ORIGINAL.csv includes the data from Modality 1 and 2, and sample_meta-data_sleeps.csv includes the data from Modality 3.
 
 ![](./image/data_description.png)
 
