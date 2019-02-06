@@ -2,7 +2,7 @@
   "phase1_parameter": {
     "batch_size" : 35,
     "learning_rate" : 1e-4,
-    "epoch" : 20,
+    "epoch" : 400,
     "keep_prob" : 0.8,
     "step1_hidden_size": 200,
     "step2_hidden_size": 75,
@@ -16,7 +16,7 @@
   "phase2_parameter": {
     "batch_size" : 35,
     "learning_rate" : 1e-4,
-    "epoch" : 20,
+    "epoch" : 400,
     "keep_prob" : 0.8,
     "query_size" : 70,
     "metadata_hidden_size1": 90,
