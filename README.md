@@ -25,6 +25,7 @@ The code has been tested running under Python 3.6.6. with the following packages
 ##### Model parameter
 You can set parameter by modifying Sleep_Efficiency_Prediction/model_parameter.json file. In our paper, to make a prediction, we used parameters as follows.
 
+```
 {
   "phase1_parameter": {
     "batch_size" : 35,
@@ -50,9 +51,11 @@ You can set parameter by modifying Sleep_Efficiency_Prediction/model_parameter.j
     "metadata_hidden_size2": 50
   }
 }
-
+```
 
 ##### How to Run
+```
+usage: prediction_main.py [-h] [--model_name MODEL_NAME] [--impute IMPUTE] [--load] [--printlog]
 optional arguments:
   -h, --help            show this help message and exit
   --model_name MODEL_NAME
@@ -64,6 +67,7 @@ optional arguments:
   --printlog            With this option, print train log in the prompt.
                         Otherwise, no logs are printed
 
+```
 
 ##### Example
 ```
