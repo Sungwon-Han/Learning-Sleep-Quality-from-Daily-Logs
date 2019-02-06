@@ -55,7 +55,7 @@ You can set parameter by modifying Sleep_Efficiency_Prediction/model_parameter.j
 
 ##### How to Run
 ```
-usage: prediction_main.py [-h] [--model_name MODEL_NAME] [--impute IMPUTE] [--load] [--printlog]
+usage: main.py [-h] [--model_name MODEL_NAME] [--impute IMPUTE] [--load] [--printlog]
 optional arguments:
   -h, --help            show this help message and exit
   --model_name MODEL_NAME
@@ -72,7 +72,7 @@ optional arguments:
 ##### Example
 ```
 $ cd Sleep_Efficiency_Prediction
-$ python prediction_main.py --model_name TEST_MODEL --impute GAIN --printlog
+$ python main.py --model_name TEST_MODEL --impute GAIN --printlog
 ```
 
 

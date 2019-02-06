@@ -15,7 +15,7 @@ def impute_BLANK(save = True):
     data = np.concatenate([index, np.array(data).reshape(-1, 14)], axis = 1)
     
     if save:
-        np.savetxt("../data/sample_data_sleeps_Imp-BLANK.csv", data, header=",".join(load_header()), delimiter=",", comments='', fmt='%s')          
+        np.savetxt("../data/sample_data_sleeps_BLANK.csv", data, header=",".join(load_header()), delimiter=",", comments='', fmt='%s')          
     return data
 
 def impute_AVERAGE(save = True):
@@ -42,7 +42,7 @@ def impute_AVERAGE(save = True):
     data = np.concatenate([index, np.array(data).reshape(-1, 14)], axis = 1)
     
     if save:
-        np.savetxt("../data/sample_data_sleeps_Imp-AVERAGE.csv", data, header=",".join(load_header()), delimiter=",", comments='', fmt='%s')      
+        np.savetxt("../data/sample_data_sleeps_AVERAGE.csv", data, header=",".join(load_header()), delimiter=",", comments='', fmt='%s')      
     return data
 
 def impute_GAIN():
@@ -51,20 +51,20 @@ def impute_GAIN():
 
 def load_dataset(mode):
     if mode == "BLANK":
-        data = np.genfromtxt("../data/sample_data_sleeps_Imp-BLANK.csv", delimiter=',')[1:]
+        data = np.genfromtxt("../data/sample_data_sleeps_BLANK.csv", delimiter=',')[1:]
     elif mode == "AVERAGE":
-        data = np.genfromtxt("../data/sample_data_sleeps_Imp-AVERAGE.csv", delimiter=',')[1:]      
+        data = np.genfromtxt("../data/sample_data_sleeps_AVERAGE.csv", delimiter=',')[1:]      
     elif mode == "GAIN":
         data = np.genfromtxt("../data/sample_data_sleeps_Imp-GAIN.csv", delimiter=',')[1:]
     else:
-        data = np.genfromtxt("../data/sample_data_sleeps_Imp-ORIGINAL.csv", delimiter=',')[1:]
+        data = np.genfromtxt("../data/sample_data_sleeps_ORIGINAL.csv", delimiter=',')[1:]
        
     index = data[:, 0:3]
     value = np.concatenate([index[:, 0:1], data[:, 3:17]], axis = 1)        
     return data, index, value
 
 def load_header():
-    data = np.genfromtxt("../data/sample_data_sleeps_Imp-ORIGINAL.csv", delimiter=',', names = True)[1:]
+    data = np.genfromtxt("../data/sample_data_sleeps_ORIGINAL.csv", delimiter=',', names = True)[1:]
     return list(data.dtype.names)
 
 
