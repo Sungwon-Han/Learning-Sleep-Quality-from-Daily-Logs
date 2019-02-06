@@ -13,7 +13,12 @@ def max_min_normalization(sleep_activity_nap):
     sleep_activity_nap = pd.concat([userId,sleep_activity_nap],axis=1)
     return sleep_activity_nap
 
-def Dict_user_data_original(user_Id,month,date,sleep_activity_nap):
+def Dict_user_data(sleep_activity_nap):
+    
+    user_Id = list(set(sleep_activity_nap["userId"]))
+    month = list(set(sleep_activity_nap["month"]))
+    date = [[i+23 for i in range(8)],[j+1 for j in range(31)],[k+1 for k in range(3)]]
+    
     dict_user_data = {}
     for i in pyprind.prog_bar(range(len(user_Id))):
         user_data = []
@@ -26,7 +31,7 @@ def Dict_user_data_original(user_Id,month,date,sleep_activity_nap):
         dict_user_data[user_Id[i]] = user_data
     return dict_user_data
 
-def Dict_user_data(user_Id,sleep_activity_nap):
+def Dict_user_data_2(user_Id,sleep_activity_nap):
     dict_user_data = {}
     for i in pyprind.prog_bar(range(len(user_Id))):
         #user_data = []
