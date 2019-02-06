@@ -22,8 +22,13 @@ The code has been tested running under Python 3.6.6. with the following packages
 
 ### How to Run
 ```
-$ python main.py --  If your data exist missing values , you run main.py in ’GAIN' folder for imputing
+1. python main.py --  If your data exist missing values , you run main.py in ’GAIN' folder for imputing
                      missing value. 
+2. Input data file path : 
+   For example, if your data path is 'user/Documents/dataset/data.csv', you inputthe pa.
+3. Input data saved path : 
+   For example, if you want to save imputed data in 'user/Documents/dataset/impute_data.csv',you can input the path.
+   
                     
 ``` 
 
