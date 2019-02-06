@@ -3,7 +3,7 @@ Implementation of Learning Sleep Quality from Daily Logs in Tensorflow.
 
 ### Data
 Table 1 displays the list of data features gathered by the Fitbit device and the user surveys. All features without "onbed_min" (which was excluded due to its strong correlation with other sleep features.) were used in this project. 
-Sample data from four randomly selected users is uploaded in data folder. sample_data_sleeps_ORIGINAL.csv includes the data from Modality 1 and 2, and sample_meta-data_sleeps.csv includes the data from Modality 3.
+Sample data from four randomly selected users is uploaded in data folder. sample_data_sleeps_Imp-ORIGINAL.csv includes the data from Modality 1 and 2, and sample_meta-data_sleeps.csv includes the data from Modality 3.
 
 ![](./image/data_description.png)
 
@@ -20,6 +20,12 @@ The code has been tested running under Python 3.6.6. with the following packages
 
 ### Part 1. MISSING DATA IMPUTATION
 
+### How to Run
+```
+$ python main.py --  If your data exist missing values , you run main.py in ’GAIN' folder for imputing
+                     missing value. 
+                    
+``` 
 
 ### Part 2. SLEEP EFFICIENCY PREDICTION
 ##### Model parameter
@@ -38,8 +44,7 @@ You can set parameter by modifying Sleep_Efficiency_Prediction/model_parameter.j
     "step4_hidden_size": 100,
     "step5_hidden_size": 90,
     "step6_hidden_size": 100, 
-    "step7_hidden_size": 500,
-    "Optimizer" : "AdamOptimizer"
+    "step7_hidden_size": 500
   },
   
   "phase2_parameter": {
@@ -49,15 +54,14 @@ You can set parameter by modifying Sleep_Efficiency_Prediction/model_parameter.j
     "keep_prob" : 0.8,
     "query_size" : 70,
     "metadata_hidden_size1": 90,
-    "metadata_hidden_size2": 50,
-    "Optimizer" : "AdamOptimizer"
+    "metadata_hidden_size2": 50
   }
 }
 ```
 
 ##### How to Run
 ```
-usage: main.py [-h] [--model_name MODEL_NAME] [--impute IMPUTE] [--load] [--printlog]
+usage: prediction_main.py [-h] [--model_name MODEL_NAME] [--impute IMPUTE] [--load] [--printlog]
 optional arguments:
   -h, --help            show this help message and exit
   --model_name MODEL_NAME
@@ -74,7 +78,7 @@ optional arguments:
 ##### Example
 ```
 $ cd Sleep_Efficiency_Prediction
-$ python main.py --model_name TEST_MODEL --impute GAIN --printlog
+$ python prediction_main.py --model_name TEST_MODEL --impute GAIN --printlog
 ```
 
 
