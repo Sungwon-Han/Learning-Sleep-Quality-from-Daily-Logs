@@ -53,7 +53,6 @@ if __name__ == '__main__':
 
     ##Transforming fitting format
     list_day_dict_predict = Standard(test_No,user_Id,dict_user_X_predict)
-    list_day_dict_true = Standard(test_No,user_Id,dict_user_Y_test)  
 
     ##Ranking predicting result in test data
     for day in range(test_No):
