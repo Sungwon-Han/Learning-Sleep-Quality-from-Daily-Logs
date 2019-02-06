@@ -38,7 +38,8 @@ You can set parameter by modifying Sleep_Efficiency_Prediction/model_parameter.j
     "step4_hidden_size": 100,
     "step5_hidden_size": 90,
     "step6_hidden_size": 100, 
-    "step7_hidden_size": 500
+    "step7_hidden_size": 500,
+    "Optimizer" : "AdamOptimizer"
   },
   
   "phase2_parameter": {
@@ -48,7 +49,8 @@ You can set parameter by modifying Sleep_Efficiency_Prediction/model_parameter.j
     "keep_prob" : 0.8,
     "query_size" : 70,
     "metadata_hidden_size1": 90,
-    "metadata_hidden_size2": 50
+    "metadata_hidden_size2": 50,
+    "Optimizer" : "AdamOptimizer"
   }
 }
 ```
