@@ -1,19 +1,31 @@
 import pandas as pd
+
+import pandas as pd
 import numpy as np
+import random
 import pickle
 
 
-def Dict_user_data(user_Id,user_data):
+def Correct(sleep_activity_data_csv):
+    for i in range(sleep_activity_data_csv.shape[0]):
+        for j in range(sleep_activity_data_csv.shape[1]):
+            if sleep_activity_data_csv.iloc[i,j] == -1:
+                sleep_activity_data_csv.iloc[i,j] = np.nan
+    return sleep_activity_data_csv
+
+def Dict_user_data(user_data):
+    user_Id = list(set(user_data["userId"]))
 
     dict_user_data = {}
     for i in range(len(user_Id)):
         user_1 = user_data[user_data["userId"]==user_Id[i]]
-        user_1_data = np.array(user_1[user_1.columns[1:]])
+        user_1_data = np.array(user_1[user_1.columns[3:]])
         dict_user_data[user_Id[i]] = user_1_data
     return dict_user_data
 
-def Dict_window(user_Id,dict_data):
+def Dict_window(dict_data,user_Id_date):
 
+    user_Id = list(set(user_Id_date["userId"]))
 
     dict_window = {}
     window_number = []
@@ -27,8 +39,9 @@ def Dict_window(user_Id,dict_data):
         dict_window[Id] = window_1
     return dict_window,window_number
 
-def Window(user_Id,dict_window):
+def Window(dict_window,user_Id_date):
 
+    user_Id = list(set(user_Id_date["userId"]))
     window = []
     for i in range(len(user_Id)):
         for j in range(dict_window[user_Id[i]].shape[0]):
@@ -45,13 +58,13 @@ def Mask_dataframe(sleep_activity_data_csv):
             x = 0
         return x
     
-    user_Id_date = sleep_activity_data_csv[list(sleep_activity_data_csv.columns)[:1]]
-    mask_dataframe = sleep_activity_data_csv[list(sleep_activity_data_csv.columns)[1:]].isnull().applymap(lambda x: binary_(x))
+    user_Id_date = sleep_activity_data_csv[list(sleep_activity_data_csv.columns)[:3]]
+    mask_dataframe = sleep_activity_data_csv[list(sleep_activity_data_csv.columns)[3:]].isnull().applymap(lambda x: binary_(x))
     mask_dataframe = pd.concat([user_Id_date,mask_dataframe],axis=1)
     
     return mask_dataframe
 
-def Mask_window(mask_dataframe):
+def Mask_window(user_Id_date,mask_dataframe):
     
     
     dict_mask_data = Dict_user_data(mask_dataframe)
@@ -60,7 +73,7 @@ def Mask_window(mask_dataframe):
     
     return mask_window
 
-def Delete_window(window_number,window,user_Id,feature_name,max_,min_):
+def Delete_window(window_number,window,user_Id,feature_name,max_,min_,user_Id_date):
     window_add_number = np.cumsum(window_number)
 
     dict_impute_window = {}
@@ -82,17 +95,16 @@ def Delete_window(window_number,window,user_Id,feature_name,max_,min_):
                     user_data.append(user_window[j][k])
                 #user_data.append(user_window[j])
         dict_impute_data[user_Id[i]] = np.array(user_data)
-
+    print(dict_impute_data[1].shape)
     impute_data = []
     for i in range(len(user_Id)):
         for j in range(dict_impute_data[user_Id[i]].shape[0]):
             impute_data.append(dict_impute_data[user_Id[i]][j])
     
-    impute_data_Nu = pd.DataFrame(np.array(impute_data),columns=list(feature_name))
-    userId = sleep_activity_data_standard[['userId']]
+    impute_data = np.array(impute_data)
 
-    impute_data_standard = pd.concat([userId,impute_data_Nu],axis=1) #%
+    impute_data_Nu = pd.DataFrame(np.array(impute_data),columns=feature_name)
+    impute_data_standard = pd.concat([user_Id_date,impute_data_Nu],axis=1) #%
     impute_data = min_+(max_-min_)*impute_data_Nu
-    impute_data = pd.concat([userId,impute_data],axis=1)
-    
+    impute_data = pd.concat([user_Id_date,impute_data],axis=1)
     return impute_data_standard,impute_data
