@@ -1,8 +1,9 @@
 import argparse
+import json
 
 import pandas as pd
 from preprocess import *
-from LSTM_DH2 import LSTM_DH2
+from LSTM_DH2 import LSTM_DH
 from Cascade_Forest import Cascade_Forest
 from rank_measure import *
 
@@ -20,18 +21,23 @@ def Argument():
 if __name__ == '__main__':
 
     args = Argument()
+    
+    window＿size = 8
+    test_No = 1
 
+    json_path = '....../parameter.json'
+
+    with open(json_path,'r') as file_object:
+        parameter = json.load(file_object)
+
+    file_path = parameter['Isomnia_Ranking']['file_path']
+    thr = parameter['Isomnia_Ranking']['threshold']
+    sleep_efficiency_location = parameter['Isomnia_Ranking']['main_effect_location']
+    
     input_data_csv = pd.read_csv(input_data_path)
     user_Id = list(set(input_data_csv["userId"]))
     
-    window＿size = 8
-    sleep_efficiency_location = 4
-    thr = 0.006
-    train_No = 33
-    test_No = 1
-    
-    
-    
+     
     ##Data Pre-Processing
 
     sleep_activity_nap = max_min_normalization(input_data_csv)
@@ -42,6 +48,8 @@ if __name__ == '__main__':
 
     dict_user_window_diff,dict_user_sf_diff = Dict_user_window_sf_diff(user_Id,dict_user_window,dict_user_sleep_efficency,thr)
 
+    train_No = dict_user_window_diff[1].shape[0]-test_No
+    
     dict_user_X_train,dict_user_Y_train,dict_user_X_test,dict_user_Y_test = Dict_X_Y_seperate(user_Id,dict_user_window_diff,dict_user_sf_diff,train_No)
 
     X_train,Y_train = X_Y_train(user_Id,dict_user_X_train,dict_user_Y_train)
