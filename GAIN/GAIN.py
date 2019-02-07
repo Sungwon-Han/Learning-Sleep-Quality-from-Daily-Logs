@@ -248,7 +248,7 @@ def GAIN(window,mask_window,epouh):
 
             gen_samples = sess.run(G_sample,feed_dict = {X: image, M: replace_binary_image, Z: New_X_mb})
             gen_samples = M_mb * X_mb + (1-M_mb) * gen_samples
-            print(gen_samples[sample_size-1]) 
+         
 
    
     saver = tf.train.Saver(var_list=theta_G)
