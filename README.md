@@ -19,17 +19,28 @@ The code has been tested running under Python 3.6.6. with the following packages
 
 
 ### Part 1. MISSING DATA IMPUTATION
+##### Model parameter
+You can set parameter by modifying GAIN/parameter.json file. In our paper, to make an imputation , we used parameters as 
+follows.
 
-### How to Run
 ```
-1. python main.py --  If your data exist missing values , you run main.py in ’GAIN' folder for imputing
-                     missing value. 
-2. Input data file path : 
-   For example, if your data path is 'user/Documents/dataset/data.csv', you inputthe pa.
-3. Input data saved path : 
-   For example, if you want to save imputed data in 'user/Documents/dataset/impute_data.csv',you can input the path.
-   
-                    
+
+"GAIN": 
+      {"file_path": "....../sample_data_sleeps_ORIGINAL.csv", "save_path": "....../impute_data.csv",  "epoch": 20000}
+      
+```
+
+##### How to Run
+```
+1. Setting the path of parameter.json in main.py
+   (For example : If your parameter.json is located in 'user/Documents/data/parameter.json',you should set it as json_path in 
+    main.py)
+2. Setting parameter in parameter.json:
+   (For example : If your sample_data_sleeps_ORIGINAL.csv is saved in 'user/Documents/data/sample_data_sleeps_ORIGINAL.csv',
+    you should set it as parameter in parameter.json ; If you want to save imputed data,you should set the path whwere you       
+    want to save a parameter in parameter.json)
+3. python main.py -- After you finish step 1,2 , you can execute main.py and get imputed data.
+                   
 ``` 
 
 ### Part 2. SLEEP EFFICIENCY PREDICTION
@@ -98,4 +109,24 @@ You can load model with --load option with proper MODEL_NAME and corresponding p
 
 
 ### Part 3. INSOMNIA RANKING
+##### Model parameter
+You can set parameter by modifying Isomnia_Ranking/parameter.json file. In our paper, to make an imputation , we used 
+parameters as follows.
 
+```
+"Isomnia_Ranking": 
+           {"file_path": "....../sample_data_sleeps_Imp-GAIN.csv", "threshold": 0.006, "main_effect_location": 4}
+```
+
+##### How to Run
+```
+1. Setting the path of parameter.json in main.py
+   (For example : If your parameter.json is located in 'user/Documents/data/parameter.json',you should set it as json_path in 
+    main.py)
+2. Setting parameter in parameter.json:
+   (For example : If your sample_data_sleeps_Imp-GAIN.csv is saved in 'user/Documents/data/sample_data_sleeps_Imp-GAIN.csv',
+    you should set it as parameter in parameter.json ; If you want to save imputed data,you should set the path whwere you       
+    want to save a parameter in parameter.json)
+3. python main.py -- After you finish step 1,2 , you can execute main.py and get rank result.
+
+```
