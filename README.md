@@ -117,8 +117,8 @@ Our two attention mechanisms can be used to explore general sleep patterns among
 
 - (Phase 1) We also investigated which days are the most crucial within the chosen step-sizes in general. The below three tables show the results in regard to s=3, 5, and 7, respectively. (a) inside s=3, the first and the second ranks go to d-1 (i.e., the most recent day from the target day d and d-2; (b) inside s=5, the first and the second ranks go to d-2 and d-3; (c) inside s=7, the first and the second ranks go to d-4 and d-3.
 
-![](./image/statistics_among_previous_days_for_s=3.png)
-![](./image/statistics_among_previous_days_for_s=5.png)
+![](./image/statistics_among_previous_days_for_s=3_rev.png)
+![](./image/statistics_among_previous_days_for_s=5_rev.png)
 ![](./image/statistics_among_previous_days_for_s=7.png)
 
 
