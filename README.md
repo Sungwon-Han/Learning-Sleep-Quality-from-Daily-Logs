@@ -107,6 +107,12 @@ Models are saved in Sleep_Efficiency_Prediction/model.
 You can load model with --load option with proper MODEL_NAME and corresponding parameter file.
 
 
+##### Additional Report for the Attention Scores
+
+
+
+
+
 
 ### Part 3. INSOMNIA RANKING
 ##### Model parameter
