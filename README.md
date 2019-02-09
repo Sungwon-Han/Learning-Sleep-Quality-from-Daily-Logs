@@ -108,8 +108,16 @@ You can load model with --load option with proper MODEL_NAME and corresponding p
 
 
 ##### Additional Report for the Attention Scores
+Our two attention mechanisms can be used to explore general sleep patterns among participants.
+
+- (Phase 2) Especially, reporting ranks among step-sizes (s) can exhibit what time-frame (i.e., weekly-base) would be the most suitable for predicting sleep efficiency, in general. For 294 test chunks (7 chunks from each 42 users, c.f., 1 chunk is composed by 8 consecutive day-vectors), we recorded all attention scores among 7 step-sizes per chunk then averaged the recorded scores per step-size: the highest attention score value means the corresponding step-size is the most important for predicting sleep efficiency whereas the lowest value means the corresponding step-size is the least important. 
+
+The below table presented the mean, SD, and 95% confidence interval of averaged attention score per step-size. Overall, s=7 and s=5 take the first and the second places that many users are attended on. ANOVA test (F(6,2051)=36313, p<0.001) and the post-hoc Tukey's honest significant difference (HSD) test (p<0.001 for all combinations, see below table) confirms the averaged attention scores of step-size are statistically different from each others.
 
 
+
+
+- (Phase 1) We also investigated which days are the most crucial within the chosen step-sizes in general. The below talbes show the results with respect to s=3, 5, and 7. (a) inside s=3, the first and the second ranks go to d-1 (i.e., the most recent day from the target day d and d-2; (b) inside s=5, the first and the second ranks go to d-2 and d-3; (c) inside s=7, the first and the second ranks go to d-4 and d-3.
 
 
 
