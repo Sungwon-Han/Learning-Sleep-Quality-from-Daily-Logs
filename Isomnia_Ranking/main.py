@@ -3,7 +3,7 @@ import json
 
 import pandas as pd
 from preprocess import *
-from LSTM_DH2 import LSTM_DH
+from LSTM_DH2 import LSTM_DH2
 from Cascade_Forest import Cascade_Forest
 from rank_measure import *
 
@@ -20,7 +20,6 @@ def Argument():
 
 if __name__ == '__main__':
 
-    args = Argument()
     
     window＿size = 8
     test_No = 1
@@ -34,7 +33,7 @@ if __name__ == '__main__':
     thr = parameter['Isomnia_Ranking']['threshold']
     sleep_efficiency_location = parameter['Isomnia_Ranking']['main_effect_location']
     
-    input_data_csv = pd.read_csv(input_data_path)
+    input_data_csv = pd.read_csv(file_path)
     user_Id = list(set(input_data_csv["userId"]))
     
      
@@ -55,7 +54,7 @@ if __name__ == '__main__':
     X_train,Y_train = X_Y_train(user_Id,dict_user_X_train,dict_user_Y_train)
 
     ##Building LSTM_DH_G model
-    latent_train_vector ,dict_user_X_latent_vector= LSTM_DH(X_train,Y_train,user_Id,dict_user_X_test)
+    latent_train_vector ,dict_user_X_latent_vector= LSTM_DH2(X_train,Y_train,user_Id,dict_user_X_test)
 
     dict_user_X_predict = Cascade_Forest(test_No,user_Id,latent_train_vector,Y_train,dict_user_X_latent_vector)
 
