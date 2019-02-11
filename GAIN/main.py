@@ -63,7 +63,7 @@ if __name__ == '__main__':
     mask_window = Mask_window(user_Id_date,mask_dataframe)
 
     ##Building GAIN model
-    generate_window = GAIN(window,mask_window,epouh).reshape((-1,8,len(feature_name)))
+    generate_window = GAIN(window,mask_window,epoch).reshape((-1,8,len(feature_name)))
 
     ##Transform generate window into impute data
     impute_data_standard,impute_data = Delete_window(window_number,generate_window,user_Id,feature_name,max_,min_,user_Id_date)
