@@ -16,7 +16,6 @@ def Argument():
 
 if __name__ == '__main__':
 
-    args = Argument()
 
     json_path = '....../parameter.json'
     
