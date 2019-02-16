@@ -127,7 +127,7 @@ Our two attention mechanisms can be used to explore general sleep patterns among
 
 ### Part 3. INSOMNIA RANKING
 ##### Model parameter
-You can set parameter by modifying Isomnia_Ranking/parameter.json file. In our paper, to make an imputation , we used 
+You can set parameter by modifying Isomnia_Ranking/parameter.json file. In our paper, to rank users, we used 
 parameters as follows.
 
 ```
