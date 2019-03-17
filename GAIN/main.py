@@ -1,6 +1,7 @@
 import json
 import argparse
-
+import matplotlib
+matplotlib.use('Agg')
 import pandas as pd
 from preprocess import *
 from GAIN import GAIN
@@ -69,7 +70,7 @@ if __name__ == '__main__':
     impute_data_standard,impute_data = Delete_window(window_number,generate_window,user_Id,feature_name,max_,min_,user_Id_date)
     
     ##Saving
-    impute_data.to_csv(save_path)
+    impute_data.to_csv(save_path,index=0)
     
     
     '''
