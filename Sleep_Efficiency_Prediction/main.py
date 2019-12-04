@@ -70,6 +70,7 @@ if __name__ == '__main__':
     preprocessed_data, training, test = preprocess(data, saved_train_index, saved_test_index)
     
     # Phase 1
+    ## Please be advised that the prediciton performance could be different based on the given initial seeds
     loss_list = []
     training_phase2_h_list = []
     test_phase2_h_list = []
